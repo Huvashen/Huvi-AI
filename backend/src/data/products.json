@@ -1,0 +1,32 @@
+[
+  {
+    "sku": "CHOCO-001",
+    "name": "Crunchy Chocolate Bar",
+    "brand": "SweetCo",
+    "category": "Confectionery",
+    "ingredients": ["Sugar", "Cocoa", "Milk Powder", "Peanuts"],
+    "warnings": ["Contains milk", "Contains peanuts"],
+    "storage": "Store in a cool, dry place.",
+    "description": "A milk chocolate bar with crunchy peanut pieces."
+  },
+  {
+    "sku": "JUICE-002",
+    "name": "Orange Breakfast Juice",
+    "brand": "FreshSip",
+    "category": "Beverages",
+    "ingredients": ["Orange Juice", "Vitamin C"],
+    "warnings": ["No known allergens"],
+    "storage": "Refrigerate after opening.",
+    "description": "A refreshing orange juice with added vitamin C."
+  },
+  {
+    "sku": "BREAD-003",
+    "name": "Whole Wheat Bread",
+    "brand": "BakeHouse",
+    "category": "Bakery",
+    "ingredients": ["Whole Wheat Flour", "Water", "Yeast", "Salt"],
+    "warnings": ["Contains gluten"],
+    "storage": "Keep sealed. Store in a cool, dry place.",
+    "description": "Soft whole wheat bread for sandwiches and toast."
+  }
+]
