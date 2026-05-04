@@ -28,5 +28,29 @@
     "warnings": ["Contains gluten"],
     "storage": "Keep sealed. Store in a cool, dry place.",
     "description": "Soft whole wheat bread for sandwiches and toast."
-  }
+  },
+  {
+  "sku": "0005015252",
+  "name": "Coca-Cola Light",
+  "brand": "Coca-Cola",
+  "category": "Beverages",
+  "ingredients": [
+    "Carbonated Water",
+    "Caramel Colour",
+    "Phosphoric Acid",
+    "Aspartame",
+    "Acesulfame-K",
+    "Sucralose",
+    "Flavouring",
+    "Sodium Benzoate",
+    "Trisodium Citrate",
+    "Caffeine"
+  ],
+  "warnings": [
+    "Contains artificial sweeteners",
+    "Contains caffeine"
+  ],
+  "storage": "Store in a cool, dry place.",
+  "description": "Coca-Cola Light is a low-calorie soft drink with no sugar, offering the same great Coca-Cola taste with a lighter flavour."
+}
 ]

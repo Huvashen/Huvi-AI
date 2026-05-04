@@ -3,7 +3,7 @@ import { z } from "zod";
 import fs from "node:fs";
 import path from "node:path";
 
-type Product = {
+export type Product = {
   sku: string;
   name: string;
   brand: string;

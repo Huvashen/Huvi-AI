@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import { validateProductQa } from "./services/qaValidator.js";
+import type { Product } from "./tools/productTools.js";
 import { HfInference } from "@huggingface/inference";
 import {
   findProductBySkuTool,
@@ -53,6 +55,7 @@ async function getProductContext(question: string): Promise<string> {
   return JSON.stringify(getAllProducts(), null, 2);
 }
 
+// Health check endpoint
 app.get("/api/health", (_req, res) => {
   res.json({
     status: "ok",
@@ -60,10 +63,12 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
+// New endpoint to get all products
 app.get("/api/products", (_req, res) => {
   res.json(getAllProducts());
 });
 
+// New endpoint for asking questions to the AI
 app.post("/api/ask", async (req, res) => {
   try {
     const question = String(req.body.question ?? "");
@@ -97,6 +102,7 @@ ${question}
   }
 });
 
+// New endpoint for QA check
 app.post("/api/qa-check", async (req, res) => {
   try {
     const sku = String(req.body.sku ?? "");
@@ -109,26 +115,16 @@ app.post("/api/qa-check", async (req, res) => {
 
     const productContext = await findProductBySkuTool.invoke({ sku });
 
-    const answer = await askHuggingFace(`
-Product data:
-${productContext}
+    if (productContext.startsWith("No product found")) {
+      return res.status(404).json({
+        error: productContext
+      });
+    }
 
-Task:
-Run a QA check on this product.
+    const product = JSON.parse(productContext) as Product;
+    const qaResult = validateProductQa(product);
 
-Check:
-- Missing product fields
-- Allergen warnings
-- Storage instructions
-- Any obvious product safety notes
-
-Return a short bullet-point summary.
-`);
-
-    return res.json({
-      sku,
-      answer
-    });
+    return res.json(qaResult);
   } catch (error: any) {
     console.error("QA Check API error:", error);
 
